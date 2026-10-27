@@ -1,0 +1,5 @@
+# Python side of the pipeline.
+# GitHub Actions does NOT need edge-tts: the MP3s, word timings and the final
+# 60 s mix are committed, so CI renders fully offline.
+numpy>=1.26
+edge-tts>=7.0

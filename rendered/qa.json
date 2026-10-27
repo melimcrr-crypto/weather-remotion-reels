@@ -1,0 +1,305 @@
+{
+  "file": "weather-reels-1080x1920.mp4",
+  "duration": 60.011,
+  "size_bytes": 10099386,
+  "video": {
+    "codec_name": "h264",
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1",
+    "pix_fmt": "yuv420p",
+    "nb_frames": "1800"
+  },
+  "audio": [
+    {
+      "codec_name": "aac",
+      "sample_rate": "48000",
+      "channels": 2
+    }
+  ],
+  "subtitles": [
+    {
+      "codec_name": "mov_text",
+      "tags": {
+        "language": "fas",
+        "handler_name": "SubtitleHandler"
+      }
+    }
+  ],
+  "loudness": {
+    "input_i": -14.85,
+    "input_tp": -1.67,
+    "input_lra": "5.70",
+    "input_thresh": "-25.86"
+  },
+  "instagram_variants": {
+    "weather-feed-1080x1350.mp4": "1080x1350",
+    "weather-feed-1080x1080.mp4": "1080x1080",
+    "weather-reels-720x1280.mp4": "720x1280"
+  },
+  "checks": [
+    {
+      "check": "duration",
+      "status": "PASS",
+      "value": 60.011,
+      "expected": "60 +/- 0.20 s"
+    },
+    {
+      "check": "resolution",
+      "status": "PASS",
+      "value": "1080x1920",
+      "expected": "1080x1920 (9:16 Reels)"
+    },
+    {
+      "check": "fps",
+      "status": "PASS",
+      "value": "30/1",
+      "expected": "30"
+    },
+    {
+      "check": "frame count",
+      "status": "PASS",
+      "value": 1800,
+      "expected": 1800
+    },
+    {
+      "check": "video codec",
+      "status": "PASS",
+      "value": "h264",
+      "expected": "h264"
+    },
+    {
+      "check": "pixel format",
+      "status": "PASS",
+      "value": "yuv420p",
+      "expected": "yuv420p"
+    },
+    {
+      "check": "audio stream",
+      "status": "PASS",
+      "value": 1,
+      "expected": ">= 1"
+    },
+    {
+      "check": "audio codec",
+      "status": "PASS",
+      "value": "aac",
+      "expected": "aac"
+    },
+    {
+      "check": "soft RTL subtitle",
+      "status": "PASS",
+      "value": [
+        "fas"
+      ],
+      "expected": "mov_text / fas"
+    },
+    {
+      "check": "integrated loudness",
+      "status": "PASS",
+      "value": -14.85,
+      "expected": "-14 LUFS +/- 1.5"
+    },
+    {
+      "check": "true peak",
+      "status": "PASS",
+      "value": -1.67,
+      "expected": "<= -0.8 dBTP"
+    },
+    {
+      "check": "variant weather-feed-1080x1350.mp4",
+      "status": "PASS",
+      "value": "1080x1350",
+      "expected": "1080x1350"
+    },
+    {
+      "check": "variant weather-feed-1080x1080.mp4",
+      "status": "PASS",
+      "value": "1080x1080",
+      "expected": "1080x1080"
+    },
+    {
+      "check": "variant weather-reels-720x1280.mp4",
+      "status": "PASS",
+      "value": "720x1280",
+      "expected": "720x1280"
+    },
+    {
+      "check": "deliverable preview.gif",
+      "status": "PASS",
+      "value": "preview.gif",
+      "expected": "exists"
+    },
+    {
+      "check": "deliverable contact-sheet.png",
+      "status": "PASS",
+      "value": "contact-sheet.png",
+      "expected": "exists"
+    },
+    {
+      "check": "deliverable caption-check.png",
+      "status": "PASS",
+      "value": "caption-check.png",
+      "expected": "exists"
+    },
+    {
+      "check": "deliverable weather.srt",
+      "status": "PASS",
+      "value": "weather.srt",
+      "expected": "exists"
+    },
+    {
+      "check": "SRT has Persian text",
+      "status": "PASS",
+      "value": 1437,
+      "expected": "contains Arabic-block glyphs"
+    }
+  ],
+  "ffmpeg_skill": {
+    "tool": "kajisho5/ffmpeg-skill check.py",
+    "exit": 0,
+    "report": {
+      "status": "completed",
+      "output": null,
+      "dry_run": false,
+      "verified": false,
+      "commands": 1,
+      "platform": "reels",
+      "checks": [
+        {
+          "check": "duration",
+          "status": "PASS",
+          "value": "60.01s",
+          "expected": "<= 90s",
+          "fix": "decide with the user: cut.py keeps quality but drops content; fit.py --duration speeds up (audio pitch-preserved, motion faster)",
+          "reason": "",
+          "kind": "judgement"
+        },
+        {
+          "check": "aspect",
+          "status": "PASS",
+          "value": "9:16",
+          "expected": "9:16/4:5/1:1",
+          "fix": "fit.py --aspect 9:16 --fit pad (keeps everything, adds bars) or crop (fills the frame, loses the edges: check the subject with look.py)",
+          "reason": "",
+          "kind": "judgement"
+        },
+        {
+          "check": "resolution",
+          "status": "PASS",
+          "value": "1080x1920",
+          "expected": "short side >= 1080",
+          "fix": "upscaling will not add detail; re-export from the master",
+          "reason": "",
+          "kind": "judgement"
+        },
+        {
+          "check": "fps",
+          "status": "PASS",
+          "value": "30",
+          "expected": "<= 60",
+          "fix": "fit.py --fps 30 (drops half the frames of 60 fps motion; fine for talking heads, visible on sports/gaming)",
+          "reason": "",
+          "kind": "judgement"
+        },
+        {
+          "check": "vfr",
+          "status": "PASS",
+          "value": "constant",
+          "expected": "constant",
+          "fix": "fit.py --fps N (any re-encode conforms it)",
+          "reason": "",
+          "kind": "format"
+        },
+        {
+          "check": "video codec",
+          "status": "PASS",
+          "value": "h264",
+          "expected": "h264/hevc",
+          "fix": "export.py --preset reels",
+          "reason": "",
+          "kind": "format"
+        },
+        {
+          "check": "pixel format",
+          "status": "PASS",
+          "value": "yuv420p",
+          "expected": "yuv420p (8-bit 4:2:0)",
+          "fix": "export.py preset re-encodes to yuv420p",
+          "reason": "",
+          "kind": "format"
+        },
+        {
+          "check": "colour",
+          "status": "PASS",
+          "value": "bt709/bt709",
+          "expected": "bt709/bt709 tagged (or HDR)",
+          "fix": "",
+          "reason": "",
+          "kind": "format"
+        },
+        {
+          "check": "file size",
+          "status": "PASS",
+          "value": "9.6 MB",
+          "expected": "<= 4096 MB",
+          "fix": "export.py --crf 24 or lower resolution",
+          "reason": "",
+          "kind": "format"
+        },
+        {
+          "check": "audio",
+          "status": "PASS",
+          "value": "aac 2ch 48000Hz",
+          "expected": "present",
+          "fix": "",
+          "reason": "",
+          "kind": "format"
+        },
+        {
+          "check": "subtitles",
+          "status": "PASS",
+          "value": "1 (fas)",
+          "expected": "every track tagged with its language",
+          "fix": "",
+          "reason": "",
+          "kind": "format"
+        },
+        {
+          "check": "loudness",
+          "status": "PASS",
+          "value": "-14.8 LUFS",
+          "expected": "-14 ± 2 LUFS",
+          "fix": "loudness.py -I -14 for speech or music; leave ambience/near-silence (<= -40 LUFS) alone and say so",
+          "reason": "",
+          "kind": "judgement"
+        },
+        {
+          "check": "true peak",
+          "status": "PASS",
+          "value": "-1.7 dBTP",
+          "expected": "<= -1 dBTP",
+          "fix": "loudness.py --tp -1",
+          "reason": "",
+          "kind": "judgement"
+        }
+      ],
+      "failed": 0,
+      "warnings": 0,
+      "ok": true
+    },
+    "human": "/home/user/weather-remotion-reels/rendered/weather-reels-1080x1920.mp4 — reels\n  PASS duration      60.01s  (expected <= 90s)\n  PASS aspect        9:16  (expected 9:16/4:5/1:1)\n  PASS resolution    1080x1920  (expected short side >= 1080)\n  PASS fps           30  (expected <= 60)\n  PASS vfr           constant  (expected constant)\n  PASS video codec   h264  (expected h264/hevc)\n  PASS pixel format  yuv420p  (expected yuv420p (8-bit 4:2:0))\n  PASS colour        bt709/bt709  (expected bt709/bt709 tagged (or HDR))\n  PASS file size     9.6 MB  (expected <= 4096 MB)\n  PASS audio         aac 2ch 48000Hz  (expected present)\n  PASS subtitles     1 (fas)  (expected every track tagged with its language)\n  PASS loudness      -14.8 LUFS  (expected -14 ± 2 LUFS)\n  PASS true peak     -1.7 dBTP  (expected <= -1 dBTP)\n  13 checks, 0 failed, 0 warnings",
+    "stderr": ""
+  },
+  "deliverables": [
+    "caption-check.png",
+    "contact-sheet.png",
+    "preview.gif",
+    "qa.json",
+    "weather-feed-1080x1080.mp4",
+    "weather-feed-1080x1350.mp4",
+    "weather-reels-1080x1920.mp4",
+    "weather-reels-720x1280.mp4",
+    "weather.srt"
+  ]
+}

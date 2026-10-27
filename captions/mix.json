@@ -1,0 +1,44 @@
+[
+  {
+    "file": "public/audio/voice_00_intro.mp3",
+    "at": 0.42,
+    "duration": 8.16,
+    "scene": "intro",
+    "rate": "+6%"
+  },
+  {
+    "file": "public/audio/voice_01_atmosphere.mp3",
+    "at": 10.42,
+    "duration": 7.872,
+    "scene": "atmosphere",
+    "rate": "+6%"
+  },
+  {
+    "file": "public/audio/voice_02_temp-pressure.mp3",
+    "at": 20.42,
+    "duration": 7.872,
+    "scene": "temp-pressure",
+    "rate": "+6%"
+  },
+  {
+    "file": "public/audio/voice_03_humidity.mp3",
+    "at": 30.42,
+    "duration": 8.64,
+    "scene": "humidity",
+    "rate": "+14%"
+  },
+  {
+    "file": "public/audio/voice_04_fronts.mp3",
+    "at": 40.42,
+    "duration": 8.712,
+    "scene": "fronts",
+    "rate": "+6%"
+  },
+  {
+    "file": "public/audio/voice_05_forecast.mp3",
+    "at": 50.42,
+    "duration": 9.0,
+    "scene": "forecast",
+    "rate": "+14%"
+  }
+]

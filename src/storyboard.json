@@ -1,0 +1,125 @@
+{
+  "schema": "weather-remotion-reels/1",
+  "title_fa": "هواشناسی در ۶۰ ثانیه",
+  "title_en": "Meteorology in 60 seconds — Instagram Reels",
+  "language": "fa",
+  "voice": "fa-IR-DilaraNeural",
+  "voice_pitch": "+12Hz",
+  "voice_rate": "+6%",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "duration": 60,
+  "character": { "name": "ابرک", "name_en": "Abrak" },
+  "handle": "@abrak.weather",
+  "palette": {
+    "skyTop": "#7DD3FC",
+    "skyMid": "#C7E9FD",
+    "skyBottom": "#FFF3D6",
+    "ink": "#0B2A4A",
+    "inkSoft": "#3B6485",
+    "card": "#FFFFFF",
+    "cardFill": "rgba(255,255,255,0.90)",
+    "cardLine": "rgba(11,42,74,0.10)",
+    "accent": "#F59E0B",
+    "accent2": "#0EA5E9",
+    "cool": "#2563EB",
+    "warm": "#F97316",
+    "rain": "#38BDF8",
+    "green": "#10B981",
+    "pink": "#FB7185",
+    "captionBg": "rgba(9,32,56,0.90)",
+    "highlight": "#FDE047"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "start": 0,
+      "duration": 10,
+      "kind": "intro",
+      "kicker": "۱ / ۶ — شروع",
+      "title": "هواشناسی یعنی چی؟",
+      "subtitle": "علمِ حالوهوای زمین",
+      "narration": "سلام! من ابرک هستم. تو این شصت ثانیه یاد میگیری هواشناسی چیه، و چطور هوا رو پیشبینی میکنن.",
+      "takeaway": "هواشناسی = شناختِ جوّ و تغییراتش",
+      "chips": ["جوّ زمین", "دما و فشار", "باد و باران"]
+    },
+    {
+      "id": "atmosphere",
+      "start": 10,
+      "duration": 10,
+      "kind": "atmosphere",
+      "kicker": "۲ / ۶ — لایهها",
+      "title": "جوّ زمین، لایه به لایه",
+      "subtitle": "همهچیز از اینجا شروع میشه",
+      "narration": "همهچیز از جوّ زمین شروع میشه. لایهای که توش زندگی میکنیم تروپوسفره؛ همونجایی که ابرها و بادها شکل میگیرن.",
+      "takeaway": "تمامِ هوا و ابرها توی تروپوسفرن",
+      "layers": [
+        { "name": "تروپوسفر", "sub": "۰ تا ۱۲ کیلومتر · ابر و باران", "color": "#0EA5E9" },
+        { "name": "استراتوسفر", "sub": "۱۲ تا ۵۰ · لایهٔ اُزن", "color": "#60A5FA" },
+        { "name": "مزوسفر", "sub": "۵۰ تا ۸۵ · شهابها میسوزن", "color": "#A5B4FC" }
+      ]
+    },
+    {
+      "id": "temp-pressure",
+      "start": 20,
+      "duration": 10,
+      "kind": "temp",
+      "kicker": "۳ / ۶ — نیروها",
+      "title": "دما و فشار، دو تا قطب",
+      "subtitle": "چرا هوا جابهجا میشه؟",
+      "narration": "خورشید زمین رو گرم میکنه، ولی یکسان نه. جای گرم هوا بالا میره و فشار کم میشه؛ جای سرد، هوا پایین میاد.",
+      "takeaway": "تفاوتِ فشار → باد",
+      "gauges": {
+        "tempFrom": -5,
+        "tempTo": 35,
+        "pressureFrom": 985,
+        "pressureTo": 1030
+      }
+    },
+    {
+      "id": "humidity",
+      "start": 30,
+      "duration": 10,
+      "kind": "humidity",
+      "kicker": "۴ / ۶ — ابرها",
+      "title": "رطوبت و ساختهشدن ابر",
+      "subtitle": "از دریا تا آسمون",
+      "narration": "هوای گرم بخار آب رو بالا میبره. بالاتر که سرد بشه، بخار به قطرههای ریز تبدیل میشه. بهش میگیم تراکم؛ نتیجهش ابره.",
+      "takeaway": "بخار + سرما = قطره = ابر",
+      "steps": ["تبخیر", "صعود", "سرد شدن", "تراکم"]
+    },
+    {
+      "id": "fronts",
+      "start": 40,
+      "duration": 10,
+      "kind": "fronts",
+      "kicker": "۵ / ۶ — حرکت",
+      "title": "باد و جبههٔ هوا",
+      "subtitle": "وقتی دو توده به هم میرسن",
+      "narration": "هوا همیشه از فشار زیاد به طرف فشار کم میره؛ اسمش باده. وقتی تودهٔ سرد و گرم به هم میرسن، جبهه میسازن و بارون میاد.",
+      "takeaway": "برخوردِ سرد و گرم = تغییر هوا",
+      "fronts": ["جبههٔ سرد", "جبههٔ گرم"]
+    },
+    {
+      "id": "forecast",
+      "start": 50,
+      "duration": 10,
+      "kind": "forecast",
+      "kicker": "۶ / ۶ — نتیجه",
+      "title": "پیشبینی یعنی چی؟",
+      "subtitle": "از اندازهگیری تا فردا",
+      "narration": "هواشناسها دما، فشار، رطوبت و باد رو اندازه میگیرن، بعد با مدلهای کامپیوتری فردا رو حساب میکنن. خلاصه: اندازهگیری، مدل، پیشبینی.",
+      "takeaway": "اندازهگیری ← مدل ← پیشبینی",
+      "forecast": [
+        { "day": "شنبه", "icon": "sun", "hi": 29, "lo": 18 },
+        { "day": "یکشنبه", "icon": "cloud", "hi": 26, "lo": 17 },
+        { "day": "دوشنبه", "icon": "rain", "hi": 21, "lo": 14 },
+        { "day": "سهشنبه", "icon": "storm", "hi": 19, "lo": 12 },
+        { "day": "چهارشنبه", "icon": "sun", "hi": 24, "lo": 15 }
+      ],
+      "summary": ["اندازهگیری", "مدل", "پیشبینی"],
+      "cta": "دفعهٔ بعد که هوا عوض شد، میدونی چرا!"
+    }
+  ]
+}

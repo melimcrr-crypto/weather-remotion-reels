@@ -1,0 +1,85 @@
+name: render weather instagram reels
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: System packages (FFmpeg + Chrome shared libs)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
+            libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 \
+            libgbm1 libasound2 libpango-1.0-0 libcairo2 libxext6 libxshmfence1
+
+      - name: Python packages
+        run: python3 -m pip install --quiet -r requirements.txt
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Ensure pinned Chrome Headless Shell
+        run: npx remotion browser ensure
+
+      - name: Delivery QA gate (ffmpeg-skill)
+        run: |
+          git clone --depth 1 https://github.com/kajisho5/ffmpeg-skill.git build/ffmpeg-skill || true
+
+      - name: Typecheck React composition
+        run: npx tsc --noEmit
+
+      - name: Verify offline timing assets
+        run: |
+          test -f public/audio/final-mix.wav
+          test -f captions/lines.json
+          test -f captions/visemes.json
+          test -f captions/fa.srt
+          python3 tools/build_voice.py --offline
+          python3 tools/build_music.py
+          python3 tools/mix_audio.py
+
+      - name: Render 60s Reel + edit + QA
+        run: python3 tools/render.py
+
+      - name: Upload render artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: weather-instagram-reels
+          path: rendered/
+          if-no-files-found: error
+
+      - name: Publish the MP4s back into the repo
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add rendered/
+          if git diff --cached --quiet; then
+            echo "rendered/ unchanged — nothing to commit"
+          else
+            git commit -m "chore(render): rebuild 60s Instagram Reels [skip ci]"
+            git push
+          fi

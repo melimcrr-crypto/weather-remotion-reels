@@ -1,0 +1,11 @@
+node_modules/
+.remotion/
+build/
+out/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+npm-debug.log*
+*.log
+!.github/workflows/*.yml
