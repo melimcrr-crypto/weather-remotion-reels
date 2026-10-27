@@ -1,7 +1,7 @@
 {
   "file": "weather-reels-1080x1920.mp4",
   "duration": 60.011,
-  "size_bytes": 10099386,
+  "size_bytes": 10162953,
   "video": {
     "codec_name": "h264",
     "width": 1080,
@@ -30,7 +30,7 @@
     "input_i": -14.85,
     "input_tp": -1.67,
     "input_lra": "5.70",
-    "input_thresh": "-25.86"
+    "input_thresh": "-25.89"
   },
   "instagram_variants": {
     "weather-feed-1080x1350.mp4": "1080x1350",
@@ -241,7 +241,7 @@
         {
           "check": "file size",
           "status": "PASS",
-          "value": "9.6 MB",
+          "value": "9.7 MB",
           "expected": "<= 4096 MB",
           "fix": "export.py --crf 24 or lower resolution",
           "reason": "",
@@ -288,7 +288,7 @@
       "warnings": 0,
       "ok": true
     },
-    "human": "/home/user/weather-remotion-reels/rendered/weather-reels-1080x1920.mp4 — reels\n  PASS duration      60.01s  (expected <= 90s)\n  PASS aspect        9:16  (expected 9:16/4:5/1:1)\n  PASS resolution    1080x1920  (expected short side >= 1080)\n  PASS fps           30  (expected <= 60)\n  PASS vfr           constant  (expected constant)\n  PASS video codec   h264  (expected h264/hevc)\n  PASS pixel format  yuv420p  (expected yuv420p (8-bit 4:2:0))\n  PASS colour        bt709/bt709  (expected bt709/bt709 tagged (or HDR))\n  PASS file size     9.6 MB  (expected <= 4096 MB)\n  PASS audio         aac 2ch 48000Hz  (expected present)\n  PASS subtitles     1 (fas)  (expected every track tagged with its language)\n  PASS loudness      -14.8 LUFS  (expected -14 ± 2 LUFS)\n  PASS true peak     -1.7 dBTP  (expected <= -1 dBTP)\n  13 checks, 0 failed, 0 warnings",
+    "human": "/home/runner/work/weather-remotion-reels/weather-remotion-reels/rendered/weather-reels-1080x1920.mp4 — reels\n  PASS duration      60.01s  (expected <= 90s)\n  PASS aspect        9:16  (expected 9:16/4:5/1:1)\n  PASS resolution    1080x1920  (expected short side >= 1080)\n  PASS fps           30  (expected <= 60)\n  PASS vfr           constant  (expected constant)\n  PASS video codec   h264  (expected h264/hevc)\n  PASS pixel format  yuv420p  (expected yuv420p (8-bit 4:2:0))\n  PASS colour        bt709/bt709  (expected bt709/bt709 tagged (or HDR))\n  PASS file size     9.7 MB  (expected <= 4096 MB)\n  PASS audio         aac 2ch 48000Hz  (expected present)\n  PASS subtitles     1 (fas)  (expected every track tagged with its language)\n  PASS loudness      -14.8 LUFS  (expected -14 ± 2 LUFS)\n  PASS true peak     -1.7 dBTP  (expected <= -1 dBTP)\n  13 checks, 0 failed, 0 warnings",
     "stderr": ""
   },
   "deliverables": [
