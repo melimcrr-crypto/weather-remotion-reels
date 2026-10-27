@@ -30,10 +30,14 @@ jobs:
       - name: System packages (FFmpeg + Chrome shared libs)
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends \
-            ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
-            libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 \
-            libgbm1 libasound2 libpango-1.0-0 libcairo2 libxext6 libxshmfence1
+          # GitHub-hosted Ubuntu images already ship Chrome's shared libraries.
+          # Only FFmpeg is guaranteed to be missing.  ALSA changed its binary
+          # package name (libasound2 -> libasound2t64) in newer Ubuntu, so try
+          # both names instead of pinning to one Ubuntu release.
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          (sudo apt-get install -y --no-install-recommends libasound2t64 2>/dev/null \
+            || sudo apt-get install -y --no-install-recommends libasound2 2>/dev/null \
+            || true)
 
       - name: Python packages
         run: python3 -m pip install --quiet -r requirements.txt

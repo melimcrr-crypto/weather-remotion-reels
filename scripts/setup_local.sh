@@ -10,7 +10,11 @@ if command -v apt-get >/dev/null 2>&1 && [ "$(id -u)" -eq 0 ] || sudo -n true 2>
   $SUDO apt-get install -y --no-install-recommends \
     ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
     libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 \
-    libgbm1 libasound2 libpango-1.0-0 libcairo2 libxext6 libxshmfence1
+    libgbm1 libpango-1.0-0 libcairo2 libxext6 libxshmfence1
+  # ALSA binary package was renamed to libasound2t64 on newer Debian/Ubuntu.
+  $SUDO apt-get install -y --no-install-recommends libasound2t64 2>/dev/null \
+    || $SUDO apt-get install -y --no-install-recommends libasound2 2>/dev/null \
+    || true
 else
   echo "    (no apt/sudo here — assuming ffmpeg + browser libs already exist)"
 fi
